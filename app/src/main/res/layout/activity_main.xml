@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#455a64"
+    android:background="#cfcfcf"
     tools:context=".LoginActivity">
 
 
@@ -112,7 +114,9 @@
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="95dp"
-        android:layout_marginTop="455dp" />
+        android:layout_marginTop="455dp"
+        android:textColorHighlight="#000000"
+        android:textIsSelectable="false" />
 
     <TextView
         android:id="@+id/textView"
