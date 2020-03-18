@@ -40,5 +40,6 @@ public class MyAlertCreate {
         builder = new AlertDialog.Builder(context);
         dialog = builder.create();
         dialog.setView(view);
+        dialog.show();
     }
 }
