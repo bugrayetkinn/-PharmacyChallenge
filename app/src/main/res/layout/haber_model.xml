@@ -8,14 +8,18 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="2dp">
+        app:cardBackgroundColor="#ff8a65"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="150dp"
-            android:layout_height="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center_vertical"
             app:srcCompat="@drawable/default_icon" />
 
         <TextView
@@ -25,15 +29,23 @@
             android:layout_marginLeft="170dp"
             android:layout_marginTop="50dp"
             android:text="Title"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/textViewIcerik"
+            android:id="@+id/textTarih"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="170dp"
-            android:layout_marginTop="100dp"
-            android:text="içerik"
-            android:textSize="17sp" />
+            android:layout_gravity="bottom|right"
+            android:text="12:224245"
+            android:textSize="15sp"
+            tools:ignore="RtlHardcoded" />
+
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="198dp"
+            android:background="#000000" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

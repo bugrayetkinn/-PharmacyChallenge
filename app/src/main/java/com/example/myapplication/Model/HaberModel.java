@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Model;
 
 /**
  * Code with ❤
@@ -12,9 +12,33 @@ package com.example.myapplication;
  */
 public class HaberModel {
 
+
     private String baslik;
-    private String icerik;
-    private String imgLink;
+    private String imgUrl;
+    private String tarih;
+
+    public HaberModel(String baslik, String imgUrl, String tarih) {
+        this.baslik = baslik;
+        this.imgUrl = imgUrl;
+        this.tarih = tarih;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getTarih() {
+        return tarih;
+    }
+
+    public void setTarih(String tarih) {
+        this.tarih = tarih;
+    }
+
 
     public String getBaslik() {
         return baslik;
@@ -24,19 +48,12 @@ public class HaberModel {
         this.baslik = baslik;
     }
 
-    public String getIcerik() {
-        return icerik;
-    }
-
-    public void setIcerik(String icerik) {
-        this.icerik = icerik;
-    }
 
     public String getImgLink() {
-        return imgLink;
+        return imgUrl;
     }
 
     public void setImgLink(String imgLink) {
-        this.imgLink = imgLink;
+        this.imgUrl = imgLink;
     }
 }

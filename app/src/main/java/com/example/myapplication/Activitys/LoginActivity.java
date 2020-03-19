@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.MyAlertCreate;
+import com.example.myapplication.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {

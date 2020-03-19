@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.Model.HaberModel;
+import com.example.myapplication.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -59,24 +63,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
 
+        HaberModel haberModel = haberModelArrayList.get(position);
+        holder.textBaslik.setText(haberModel.getBaslik());
+        holder.textTarih.setText(haberModel.getTarih());
+        Picasso.get().load(haberModel.getImgLink()).into(holder.imageView);
+
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return haberModelArrayList.size();
     }
 
     public class Holder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
-        TextView textBaslik, textIcerik;
+        TextView textBaslik, textTarih;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.imageView);
             textBaslik = itemView.findViewById(R.id.textViewBaslik);
-            textIcerik = itemView.findViewById(R.id.textViewIcerik);
+            textTarih = itemView.findViewById(R.id.textTarih);
         }
     }
 
