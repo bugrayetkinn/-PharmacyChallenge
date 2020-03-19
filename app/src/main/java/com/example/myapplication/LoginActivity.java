@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonGiris;
 
     ImageView bgapp, cloverimg;
-    LinearLayout splashText, homeText, menus;
+    LinearLayout homeText, menus;
     Animation fromBottom;
 
 
@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         bgapp.animate().translationY(-1600).setDuration(800).setStartDelay(300);
         homeText.startAnimation(fromBottom);
         menus.startAnimation(fromBottom);
+
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -109,6 +110,35 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        View view = getLayoutInflater().inflate(R.layout.alert_uygulama_cikis, null, false);
+
+        final MyAlertCreate alertCreate = new MyAlertCreate();
+        alertCreate.createAlert(LoginActivity.this, view);
+
+        Button buttonEvet = view.findViewById(R.id.buttonEvet);
+        Button buttonIptal = view.findViewById(R.id.buttonIptal);
+
+        buttonEvet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginActivity.super.onBackPressed();
+                alertCreate.getDialog().dismiss();
+            }
+        });
+
+        buttonIptal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertCreate.getDialog().dismiss();
+            }
+        });
+
 
     }
 }
