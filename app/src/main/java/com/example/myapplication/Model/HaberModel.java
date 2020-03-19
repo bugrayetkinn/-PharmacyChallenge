@@ -16,11 +16,21 @@ public class HaberModel {
     private String baslik;
     private String imgUrl;
     private String tarih;
+    private String haberLink;
 
-    public HaberModel(String baslik, String imgUrl, String tarih) {
+    public HaberModel(String baslik, String imgUrl, String tarih, String haberLink) {
         this.baslik = baslik;
         this.imgUrl = imgUrl;
         this.tarih = tarih;
+        this.haberLink = haberLink;
+    }
+
+    public String getHaberLink() {
+        return haberLink;
+    }
+
+    public void setHaberLink(String haberLink) {
+        this.haberLink = haberLink;
     }
 
     public String getImgUrl() {

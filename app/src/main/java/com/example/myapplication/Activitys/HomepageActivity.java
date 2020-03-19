@@ -137,10 +137,9 @@ public class HomepageActivity extends AppCompatActivity {
                     String title = item.child(0).text();
                     String imgLink = item.child(5).attr("url");
                     String tarih = item.child(4).text();
+                    String haberLink = item.child(3).text();
 
-                    String haberLink = item.child(2).text();
-
-                    HaberModel model = new HaberModel(title, imgLink, tarih);
+                    HaberModel model = new HaberModel(title, imgLink, tarih, haberLink);
                     modelArrayList.add(model);
                 }
                 adapter.notifyDataSetChanged();
