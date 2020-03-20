@@ -1,4 +1,4 @@
-package com.example.myapplication.Activitys;
+package com.example.myapplication.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.myapplication.EczaneFragment;
-import com.example.myapplication.HaberFragment;
+import com.example.myapplication.Fragment.EczaneFragment;
+import com.example.myapplication.Fragment.HaberFragment;
 import com.example.myapplication.MyAlertCreate;
 import com.example.myapplication.R;
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;

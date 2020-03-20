@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activitys.HaberDetayActivity"></activity>
-        <activity android:name=".Activitys.HomepageActivity" />
-        <activity android:name=".Activitys.LoginActivity">
+        <activity android:name=".Activity.HaberDetayActivity"></activity>
+        <activity android:name=".Activity.HomepageActivity" />
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.Activitys.HaberDetayActivity;
+import com.example.myapplication.Activity.HaberDetayActivity;
 import com.example.myapplication.Model.HaberModel;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
  */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder> {
 
-    private int position;
+    HaberModel haberModel;
     private ArrayList<HaberModel> haberModelArrayList = new ArrayList<>();
     private Context mContext;
 
@@ -64,13 +64,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Holder holder, int position) {
+    public void onBindViewHolder(@NonNull Holder holder, final int position) {
 
-        position = position;
-        HaberModel haberModel = haberModelArrayList.get(position);
+        haberModel = haberModelArrayList.get(position);
         holder.textBaslik.setText(haberModel.getBaslik());
         holder.textTarih.setText(haberModel.getTarih());
         Picasso.get().load(haberModel.getImgLink()).into(holder.imageView);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ıntent = new Intent(mContext, HaberDetayActivity.class);
+                ıntent.putExtra("haberLink", haberModelArrayList.get(position).getHaberLink());
+                mContext.startActivity(ıntent);
+            }
+        });
     }
 
     @Override
@@ -86,20 +94,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder
         public Holder(@NonNull final View itemView) {
             super(itemView);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent ıntent = new Intent(mContext, HaberDetayActivity.class);
-                    String haberLink = haberModelArrayList.get(position).getHaberLink();
-                    ıntent.putExtra("haberLink", haberLink);
-                    mContext.startActivity(ıntent);
-                }
-            });
             imageView = itemView.findViewById(R.id.imageView);
             textBaslik = itemView.findViewById(R.id.textViewBaslik);
             textTarih = itemView.findViewById(R.id.textTarih);
         }
     }
-
 }

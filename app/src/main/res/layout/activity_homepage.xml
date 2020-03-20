@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ff8a65"
-        tools:context=".Activitys.HomepageActivity">
+        tools:context=".Activity.HomepageActivity">
 
         <FrameLayout
             android:id="@+id/frameLayout"

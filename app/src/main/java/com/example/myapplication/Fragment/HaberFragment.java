@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.myapplication.Adapter.RecyclerAdapter;
 import com.example.myapplication.Model.HaberModel;
+import com.example.myapplication.MySingleton;
+import com.example.myapplication.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
  */
 public class HaberFragment extends Fragment {
 
-    RequestQueue mQueue;
+    StringRequest mRequest;
 
     RecyclerView recyclerView;
     RecyclerAdapter adapter;
@@ -49,18 +50,19 @@ public class HaberFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_haber, container, false);
+
         recyclerView = view.findViewById(R.id.recyclerView);
+
         adapter = new RecyclerAdapter(modelArrayList, container.getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
+
         String url = "https://www.donanimhaber.com/rss/tum/";
-        StringRequest mRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        mRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
-
                 Document doc = Jsoup.parse(response);
                 Elements itemElements = doc.select("item");
 

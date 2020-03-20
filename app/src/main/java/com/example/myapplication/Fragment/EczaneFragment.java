@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.Model.CityList;
 import com.example.myapplication.Model.DistrictList;
+import com.example.myapplication.R;
 import com.google.gson.Gson;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
