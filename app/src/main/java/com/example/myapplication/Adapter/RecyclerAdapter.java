@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * ║     19/03/2020 - 13:55     ║
  * ╚════════════════════════════╝
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.HaberHolder> {
 
     HaberModel haberModel;
     private ArrayList<HaberModel> haberModelArrayList = new ArrayList<>();
@@ -58,20 +58,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder
 
     @NonNull
     @Override
-    public Holder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
+    public HaberHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.haber_model, parent, false);
-        return new Holder(view);
+        return new HaberHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Holder holder, final int position) {
+    public void onBindViewHolder(@NonNull HaberHolder haberHolder, final int position) {
 
         haberModel = haberModelArrayList.get(position);
-        holder.textBaslik.setText(haberModel.getBaslik());
-        holder.textTarih.setText(haberModel.getTarih());
-        Picasso.get().load(haberModel.getImgLink()).into(holder.imageView);
+        haberHolder.textBaslik.setText(haberModel.getBaslik());
+        haberHolder.textTarih.setText(haberModel.getTarih());
+        Picasso.get().load(haberModel.getImgLink()).into(haberHolder.imageView);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        haberHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ıntent = new Intent(mContext, HaberDetayActivity.class);
@@ -86,12 +86,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Holder
         return haberModelArrayList.size();
     }
 
-    public class Holder extends RecyclerView.ViewHolder {
+    public class HaberHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView textBaslik, textTarih;
 
-        public Holder(@NonNull final View itemView) {
+        public HaberHolder(@NonNull final View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.imageView);

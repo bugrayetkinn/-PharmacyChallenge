@@ -31,16 +31,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCity" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="372dp"
-        android:layout_height="238dp"
-        android:layout_marginTop="101dp"
-        android:gravity="center"
-        android:text="ECZANE"
-        android:textSize="50sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recylcerViewEcz"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerDistrict" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

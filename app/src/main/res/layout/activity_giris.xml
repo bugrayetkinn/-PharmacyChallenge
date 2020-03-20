@@ -129,12 +129,12 @@
 
     <Button
         android:id="@+id/buttonGiris"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="520dp"
+        android:background="#FFFFFF"
         android:text="Giriş"
-
         android:textSize="18sp" />
 
     <TextView

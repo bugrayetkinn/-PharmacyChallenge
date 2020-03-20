@@ -1,6 +1,7 @@
 package com.example.myapplication.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,14 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Model.ApiClient;
 import com.example.myapplication.Model.CityList;
 import com.example.myapplication.Model.DistrictList;
+import com.example.myapplication.Model.EczaneGelen;
+import com.example.myapplication.Model.RestInterface;
+import com.example.myapplication.Model.Result;
 import com.example.myapplication.R;
 import com.google.gson.Gson;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
@@ -23,6 +29,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Code with ❤
@@ -36,6 +46,7 @@ import java.util.List;
  */
 public class EczaneFragment extends Fragment {
 
+    RecyclerView recyclerView;
     SearchableSpinner spinnerCity, spinnerDistrict;
     BufferedReader jsonCityReader, jsonDistrictReader;
     StringBuilder jsonCityBuilder, jsonDistrictBuilder;
@@ -48,6 +59,9 @@ public class EczaneFragment extends Fragment {
     ArrayAdapter<String> cityAdapter;
     ArrayAdapter<String> districtAdapter;
 
+    RestInterface restInterface;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,9 +69,11 @@ public class EczaneFragment extends Fragment {
 
         spinnerCity = view.findViewById(R.id.spinnerCity);
         spinnerDistrict = view.findViewById(R.id.spinnerDistrict);
+        recyclerView = view.findViewById(R.id.recylcerViewEcz);
 
         spinnerDistrict.setTitle("");
         spinnerCity.setTitle("Türkiye");
+
 
         cityList = new CityList();
         districtList = new DistrictList();
@@ -129,4 +145,32 @@ public class EczaneFragment extends Fragment {
 
         return view;
     }
+
+    private void getPharmacyList(String il, String ilce) {
+        restInterface = ApiClient.getClient().create(RestInterface.class);
+        Call<EczaneGelen> call = restInterface.getResult("apikey 617enD1R2dqYyvqUdVEE3X:2T1OI3vB38vWrPLYsJFfZb",
+                "application/json", il, ilce);
+        call.enqueue(new Callback<EczaneGelen>() {
+            @Override
+            public void onResponse(Call<EczaneGelen> call, Response<EczaneGelen> response) {
+                List<Result> resultList = new ArrayList<>();
+                resultList = response.body().result;
+
+                //result list içinde dönenleri recyclerview yada list view ne kullanıyorsan init et
+
+                for (int i = 0; i < resultList.size(); i++) {
+                    Log.e("Name : ", resultList.get(i).name);
+                    Log.e("İlçe : ", resultList.get(i).dist);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<EczaneGelen> call, Throwable t) {
+
+            }
+
+        });
+    }
+
+
 }
