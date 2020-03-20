@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.HaberDetayActivity;
+import com.example.myapplication.Activitys.HaberDetayActivity;
 import com.example.myapplication.Model.HaberModel;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
