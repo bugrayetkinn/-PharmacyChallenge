@@ -60,6 +60,8 @@ public class EczaneFragment extends Fragment {
     ArrayAdapter<String> districtAdapter;
 
     RestInterface restInterface;
+    String city;
+    String district;
 
 
     @Nullable
@@ -107,6 +109,7 @@ public class EczaneFragment extends Fragment {
 
                 cityCode = position + 1;
                 spinnerDistrict.setTitle(cityList.getCityDetail().get(position).getName());
+                city = cityList.getCityDetail().get(position).getName();
 
                 if (districtDataList.size() > 0) {
                     districtDataList.clear();
@@ -120,6 +123,19 @@ public class EczaneFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        spinnerDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                district = districtList.getDistrictDetail().get(position).getIlceTitle();
+                getPharmacyList(city, district);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
