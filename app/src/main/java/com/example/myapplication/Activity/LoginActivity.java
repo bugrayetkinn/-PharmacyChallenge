@@ -22,7 +22,9 @@ import com.example.myapplication.MyAlertCreate;
 import com.example.myapplication.R;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class LoginActivity extends AppCompatActivity {
+import java.io.Serializable;
+
+public class LoginActivity extends AppCompatActivity implements Serializable {
 
     TextView txtSifremiUnuttum;
     TextInputEditText editTextSifre, editTextKullaniciAdi;
@@ -107,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                 String sifre = editTextSifre.getText().toString();
                 if (!kullaniciAdi.isEmpty() && !sifre.isEmpty()) {
                     startActivity(new Intent(LoginActivity.this, HomepageActivity.class));
+                    finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "Eksik Bilgi Girdiniz", Toast.LENGTH_SHORT).show();
                 }
