@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Model.EczaneModel;
 import com.example.myapplication.R;
 
 import java.util.List;
@@ -24,19 +25,19 @@ import java.util.List;
  * ╚════════════════════════════╝
  */
 public class EczaneAdapter extends RecyclerView.Adapter<EczaneAdapter.EczaneHolder> {
-    private List<String> eczaneModelList;
+    private List<EczaneModel> eczaneModelList;
     private Context mContext;
 
-    public EczaneAdapter(List<String> eczaneModelList, Context mContext) {
+    public EczaneAdapter(List<EczaneModel> eczaneModelList, Context mContext) {
         this.eczaneModelList = eczaneModelList;
         this.mContext = mContext;
     }
 
-    public List<String> getEczaneModelList() {
+    public List<EczaneModel> getEczaneModelList() {
         return eczaneModelList;
     }
 
-    public void setEczaneModelList(List<String> eczaneModelList) {
+    public void setEczaneModelList(List<EczaneModel> eczaneModelList) {
         this.eczaneModelList = eczaneModelList;
     }
 
@@ -58,7 +59,8 @@ public class EczaneAdapter extends RecyclerView.Adapter<EczaneAdapter.EczaneHold
     @Override
     public void onBindViewHolder(@NonNull EczaneHolder holder, int position) {
 
-        holder.textViewEczaneAd.setText(eczaneModelList.get(position));
+        holder.textViewEczaneAd.setText(eczaneModelList.get(position).getEczaneAdi());
+        holder.textViewEczaneAdres.setText(eczaneModelList.get(position).getEczaneAdres());
 
     }
 
@@ -68,12 +70,13 @@ public class EczaneAdapter extends RecyclerView.Adapter<EczaneAdapter.EczaneHold
     }
 
     public class EczaneHolder extends RecyclerView.ViewHolder {
-        TextView textViewEczaneAd;
+        TextView textViewEczaneAd, textViewEczaneAdres;
 
         public EczaneHolder(@NonNull View itemView) {
             super(itemView);
 
             textViewEczaneAd = itemView.findViewById(R.id.textViewEczaneAd);
+            textViewEczaneAdres = itemView.findViewById(R.id.textViewEczaneAdres);
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.myapplication.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,15 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Adapter.EczaneAdapter;
 import com.example.myapplication.Model.ApiClient;
 import com.example.myapplication.Model.CityList;
 import com.example.myapplication.Model.DistrictList;
 import com.example.myapplication.Model.EczaneGelen;
+import com.example.myapplication.Model.EczaneModel;
 import com.example.myapplication.Model.RestInterface;
 import com.example.myapplication.Model.Result;
 import com.example.myapplication.R;
@@ -59,7 +61,12 @@ public class EczaneFragment extends Fragment {
     ArrayAdapter<String> cityAdapter;
     ArrayAdapter<String> districtAdapter;
 
+    ArrayList<EczaneModel> eczaneModelArrayList = new ArrayList<>();
+
+    EczaneAdapter eczaneAdapter;
+
     RestInterface restInterface;
+    String city, district;
 
 
     @Nullable
@@ -107,6 +114,7 @@ public class EczaneFragment extends Fragment {
 
                 cityCode = position + 1;
                 spinnerDistrict.setTitle(cityList.getCityDetail().get(position).getName());
+                city = cityDataList.get(position).toUpperCase();
 
                 if (districtDataList.size() > 0) {
                     districtDataList.clear();
@@ -120,6 +128,20 @@ public class EczaneFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        spinnerDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                district = districtDataList.get(position).toUpperCase();
+                getPharmacyList(city, district);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -142,7 +164,6 @@ public class EczaneFragment extends Fragment {
         cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDistrict.setAdapter(districtAdapter);
 
-        getPharmacyList("İstanbul", "Avcılar");
 
         return view;
     }
@@ -158,9 +179,13 @@ public class EczaneFragment extends Fragment {
                 resultList = response.body().result;
 
                 for (int i = 0; i < resultList.size(); i++) {
-                    Log.e("Name : ", resultList.get(i).name);
-                    Log.e("İlçe : ", resultList.get(i).dist);
+                    EczaneModel eczaneModel = new EczaneModel(resultList.get(i).name, resultList.get(i).address);
+                    eczaneModelArrayList.add(eczaneModel);
                 }
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                recyclerView.setHasFixedSize(true);
+                eczaneAdapter = new EczaneAdapter(eczaneModelArrayList, getContext());
+                recyclerView.setAdapter(eczaneAdapter);
             }
 
             @Override
