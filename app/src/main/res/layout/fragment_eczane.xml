@@ -10,7 +10,7 @@
         android:id="@+id/spinnerCity"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:spinnerMode="dropdown"
         app:hintText="Şehir Seçiniz"
         app:layout_constraintEnd_toEndOf="parent"

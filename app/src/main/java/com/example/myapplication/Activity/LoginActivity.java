@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity implements Serializable {
         menus = findViewById(R.id.menus);
         fromBottom = AnimationUtils.loadAnimation(this, R.anim.from_bottom);
 
-        bgapp.animate().translationY(-1600).setDuration(800).setStartDelay(300);
+        bgapp.animate().translationY(-1500).setDuration(800).setStartDelay(300);
         homeText.startAnimation(fromBottom);
         menus.startAnimation(fromBottom);
 

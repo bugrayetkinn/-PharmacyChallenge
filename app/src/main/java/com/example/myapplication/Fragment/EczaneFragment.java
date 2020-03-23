@@ -142,13 +142,14 @@ public class EczaneFragment extends Fragment {
         cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDistrict.setAdapter(districtAdapter);
 
+        getPharmacyList("İstanbul", "Avcılar");
 
         return view;
     }
 
     private void getPharmacyList(String il, String ilce) {
         restInterface = ApiClient.getClient().create(RestInterface.class);
-        Call<EczaneGelen> call = restInterface.getResult("apikey 617enD1R2dqYyvqUdVEE3X:2T1OI3vB38vWrPLYsJFfZb",
+        Call<EczaneGelen> call = restInterface.getResult("apikey 3UANksUKuUApFbYezfc1eK:66IvgahJFr8mhATaADR6ko",
                 "application/json", il, ilce);
         call.enqueue(new Callback<EczaneGelen>() {
             @Override
