@@ -178,6 +178,10 @@ public class EczaneFragment extends Fragment {
                 List<Result> resultList = new ArrayList<>();
                 resultList = response.body().result;
 
+                if (eczaneModelArrayList != null || resultList.size() == 0) {
+                    eczaneModelArrayList.clear();
+                }
+
                 for (int i = 0; i < resultList.size(); i++) {
                     EczaneModel eczaneModel = new EczaneModel(resultList.get(i).name, resultList.get(i).address);
                     eczaneModelArrayList.add(eczaneModel);
